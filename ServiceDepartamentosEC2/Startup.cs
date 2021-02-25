@@ -44,10 +44,9 @@ namespace ServiceDepartamentosEC2
                     c.SwaggerDoc(
                         name: "v1", new OpenApiInfo
                         {
-                            Title = "Api CRUD Departamentos"
-                        ,
+                            Title = "Api Departamentos EC2 MySQL",
                             Version = "v1",
-                            Description = "Seguimos encerrados!!!"
+                            Description = "Servicio Api con EC2 y RDS MySQL"
                         });
                 });
 
