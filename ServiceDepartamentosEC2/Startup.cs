@@ -46,32 +46,15 @@ namespace ServiceDepartamentosEC2
                         {
                             Title = "Api Departamentos EC2 MySQL",
                             Version = "v1",
-                            Description = "Servicio Api con EC2 y RDS MySQL"
+                            Description = "Servicio Api con EC2 y RDS MySQL",
+                            Contact = new OpenApiContact
+                            {
+                                Name = "Paco Garcia Serrano",
+                                Email = "paco.garcia.serrano@tajamar365.com",
+                                Url = new Uri("https://www.localhost.com/"),
+                            }
                         });
                 });
-
-
-        }
-
-        private void AddSwagger(IServiceCollection services)
-        {
-            services.AddSwaggerGen(options =>
-            {
-                var groupName = "v1";
-
-                options.SwaggerDoc(groupName, new OpenApiInfo
-                {
-                    Title = $"Foo {groupName}",
-                    Version = groupName,
-                    Description = "Foo API",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Foo Company",
-                        Email = string.Empty,
-                        Url = new Uri("https://foo.com/"),
-                    }
-                });
-            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
