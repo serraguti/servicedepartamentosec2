@@ -34,7 +34,10 @@ namespace ServiceDepartamentosEC2
             services.AddDbContextPool<DepartamentosContext>
                 (options => options.UseMySql(cadena
                 , ServerVersion.AutoDetect(cadena)));
-           
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(
@@ -63,8 +66,8 @@ namespace ServiceDepartamentosEC2
             {
                 app.UseDeveloperExceptionPage();
             }
-           
 
+            app.UseCors(options => options.AllowAnyOrigin());
             app.UseHttpsRedirection();
             app.UseSwagger();
             //UI INDICA DONDE VA A VISUALIZAR EL USUARIO LA DOCUMENTACION
