@@ -28,12 +28,17 @@ namespace ServiceDepartamentosEC2
 
         public void ConfigureServices(IServiceCollection services)
         {
-            String cadena = 
+            String cadenapostgres =
+                this.Configuration.GetConnectionString("postgresawshospital");
+            String cadena = //postgresawshospital
                 this.Configuration.GetConnectionString("mysqlawshospital");
             services.AddTransient<IRepositoryDepartamentos, RepositoryDepartamentos>();
-            services.AddDbContextPool<DepartamentosContext>
-                (options => options.UseMySql(cadena
-                , ServerVersion.AutoDetect(cadena)));
+            //services.AddDbContextPool<DepartamentosContext>
+            //    (options => options.UseMySql(cadena
+            //    , ServerVersion.AutoDetect(cadena)));
+            services.AddDbContext<DepartamentosContext>(options =>
+                options.UseNpgsql(cadenapostgres));
+
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
